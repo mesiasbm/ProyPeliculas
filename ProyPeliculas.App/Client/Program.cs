@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System;
 using System.Net.Http;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using crud.movies.Client.Services;
 
 namespace ProyPeliculas.App.Client
 {
@@ -18,8 +20,14 @@ namespace ProyPeliculas.App.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
+            ConfiguracionServicios(builder.Services);
             await builder.Build().RunAsync();
         }
+        private static void ConfiguracionServicios(IServiceCollection servicios) {
+            servicios.addsingleton<IServiceMovie, ServiceMovie>();
+
+        }
+
+
     }
 }

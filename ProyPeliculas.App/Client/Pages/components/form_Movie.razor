@@ -1,0 +1,25 @@
+<div class}="jumbotron">
+    <EditForm = "Movies" OnvalidaSubmit="OnvalidaSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <div class="form-group">
+            @* FIla 1*@
+        <div class="row">
+            <div class="col">
+                <InputText class="form-control" @bind-value=@Movie.Name></InputText>
+                <ValidationMessage For="@(()=>MovieName)"><ValidationMessage>
+            </div>
+
+        <div class="col">
+                <InputText class="form-control" @bind-value=@Movie.Premier></InputText>
+                <ValidationMessage For="@ (()=>MovieName)"><ValidationMessage>
+            </div>
+
+    </EditForm>
+
+</div>
+
+
+@code{
+    [Parameter] public Movie Movie{get;set;}
+
+}
